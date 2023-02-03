@@ -17,8 +17,10 @@ def find_all_users_id(data: dict)->list:
         if "actor_id" in i.keys():
             arr.append(i["actor_id"])
         if "from_id" in i.keys():
-            arr.append(i["from_id"])    
-    return arr
+            arr.append(i["from_id"])  
+    s=set(arr)  
+    l=list(s)
+    return l
 
 path_file="data/result.json"
 print(find_all_users_id(read_data(path_file)))
