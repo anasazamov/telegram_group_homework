@@ -20,7 +20,8 @@ def find_all_users_name(data: dict)->list:
     return arr
 
 path_file="data/result.json"
-print(find_all_users_name(read_data(path_file)))
+data=read_data(path_file)
+print(find_all_users_name(data))
 
 
 
