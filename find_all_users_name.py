@@ -15,8 +15,8 @@ def find_all_users_name(data: dict)->list:
     for i in l[:32]:
         if "actor" in i.keys():
             arr.append(i["actor"])
-        if "from" in i.keys():
-            arr.append(i["from"])
+        # if "from" in i.keys():
+        #     arr.append(i["from"])
     return arr
 
 path_file="data/result.json"
