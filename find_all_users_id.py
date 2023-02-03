@@ -13,8 +13,11 @@ def find_all_users_id(data: dict)->list:
     arr=[]
     d=data
     l=d["messages"]
-    for i in l[0:33]:
-        arr.append(i["id"])
+    for i in l:
+        if "actor_id" in i.keys():
+            arr.append(i["actor_id"])
+        if "from_id" in i.keys():
+            arr.append(i["from_id"])    
     return arr
 
 path_file="data/result.json"
