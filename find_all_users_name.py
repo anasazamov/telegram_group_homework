@@ -12,13 +12,13 @@ def find_all_users_name(data: dict)->list:
     ls = []
     for i in data['messages']:
         if i['type'] == 'service':
-            if i['actor'] not in ls:
+            
                 ls.append(i['actor'])
         elif i['type'] == 'message':
-            if i['from'] not in ls:
+         
                 ls.append(i['from'])
     
-    return ls
+    return list(set(ls))
 path_file="data/result.json"
 data=read_data(path_file)
 print(find_all_users_name(data))
