@@ -9,16 +9,16 @@ def find_all_users_name(data: dict)->list:
     Returns:
         list: List containing all the users name.
     """
-    ls=[]
-    for i in data["messages"]:   
-        if i['type']=="service" or i['type']=='message':
-            if not i.get("from_id","abc").startswith("channel"):
-                if "from" in i.keys():
-                    ls.append(i["from"])
-                elif "actor" in i.keys():
-                    ls.append(i["actor"])
-    return list(set(ls))
+    ids = []
+    for msg in data['messages']:
+        if msg['type'] == 'service':
+            if msg['actor'] not in ids:
+                ids.append(msg['actor'])
+        elif msg['type'] == 'message':
+            if msg['from'] not in ids:
+                ids.append(msg['from'])
     
+    return ids
 path_file="data/result.json"
 data=read_data(path_file)
 print(find_all_users_name(data))
