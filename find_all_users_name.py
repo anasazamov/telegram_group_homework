@@ -11,6 +11,7 @@ def find_all_users_name(data: dict)->list:
     """
     ls=[]
     for i in data["messages"]:   
+        if i['type']=="service" or i['type']=='message':
             if not i.get("from_id","abc").startswith("channel"):
                 if "from" in i.keys():
                     ls.append(i["from"])
