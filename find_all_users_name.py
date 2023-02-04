@@ -13,6 +13,8 @@ def find_all_users_name(data: dict)->list:
     for i in data["messages"]:
         if "from" in i.keys():
             ls.append(i["from"])
+        elif "actor" in i.keys():
+            ls.append(i["actor"])
     return list(set(ls))
     
 path_file="data/result.json"
