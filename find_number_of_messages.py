@@ -15,7 +15,7 @@ def find_number_of_messages(data: dict)->int:
     for i in d:
         if i["type"]== "message" :
             answer+=1
-    
+     
     
     return answer
 

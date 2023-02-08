@@ -11,14 +11,15 @@ def find_all_users_id(data: dict)->list:
     """
 
     arr=[]
-    d=data
-    l=d["messages"]
-    for i in l:
-        if i["type"]=="service" or i["type"]=="message":
-            if "actor_id" in i.keys():
-                arr.append(i["actor_id"])
-            if "from_id" in i.keys():
-                arr.append(i["from_id"])  
+    for i in data["messages"]:
+        if "actor_id" in i.keys() or "from_id" in i.keys():
+            if (i["type"]=="service" or i["type"]=="message") :
+                if "actor_id" in i.keys():
+                    if  not(i["actor_id"].startswith("channel")) :
+                        arr.append(i["actor_id"])
+                if "from_id" in i.keys():
+                    if  not(i["from_id"].startswith("channel")) :    
+                        arr.append(i["from_id"])  
     s=set(arr)  
     l=list(s)
     return l
